@@ -1,5 +1,3 @@
-// Un comentario en programación es un texto dentro del código que el compilador ignora. Su propósito es explicar el código o incluir notas para otros programadores.
-
 // Definimos un objeto llamado 'persona' que contiene información personal y laboral.
 var persona = {
     // Propiedad que almacena el nombre de la persona.
