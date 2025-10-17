@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4 - Restaurantes Cáceres</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="ejercicio4.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="page">
+        <div class="frame">
+            <header class="title">
+                <h1>Restaurantes Cáceres</h1>
+            </header>
+
+            <section class="content">
+                <div class="controls">
+                    <button class="btn" id="cargar">Cargar Restaurantes</button>
+                </div>
+
+                <div class="table-wrap">
+                    <table aria-label="Listado de restaurantes">
+                        <thead>
+                            <tr>
+                                <th>Restaurante</th>
+                                <th>Nombre</th>
+                                <th>Web</th>
+                                <th>Dirección</th>
+                                <th>Máximo aforo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lista-restaurantes">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-footer">&nbsp;</div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
