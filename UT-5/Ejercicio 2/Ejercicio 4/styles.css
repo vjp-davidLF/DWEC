@@ -1,21 +1,84 @@
 /* Minimal CSS similar to Ejercicio 3 but very compact */
-body{font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;margin:16px;color:#222}
-.card{max-width:480px;margin:18px auto;border:1px solid #ccc;background:#fff}
-.card-header{background:#333;color:#fff;padding:8px;text-align:center;font-weight:600}
-form{padding:10px}
-label{display:block;margin:6px 0 4px;font-size:13px}
-input,textarea,select,button{width:100%;padding:6px;margin-bottom:8px;border:1px solid #cfcfcf;background:#fafafa}
-textarea{min-height:120px}
-button{cursor:pointer}
-#statusMsg{max-width:480px;margin:6px auto;font-size:13px}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    margin: 16px;
+    color: #222
+}
+
+.card {
+    max-width: 480px;
+    margin: 18px auto;
+    border: 1px solid #ccc;
+    background: #fff
+}
+
+.card-header {
+    background: #333;
+    color: #fff;
+    padding: 8px;
+    text-align: center;
+    font-weight: 600
+}
+
+form {
+    padding: 10px
+}
+
+label {
+    display: block;
+    margin: 6px 0 4px;
+    font-size: 13px
+}
+
+input,
+textarea,
+select,
+button {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 8px;
+    border: 1px solid #cfcfcf;
+    background: #fafafa
+}
+
+textarea {
+    min-height: 120px
+}
+
+button {
+    cursor: pointer
+}
+
+#statusMsg {
+    max-width: 480px;
+    margin: 6px auto;
+    font-size: 13px
+}
 
 /* spacing helpers to replace inline styles */
-.spaced{padding:10px}
-.mb8{margin-bottom:8px}
-.mb10{margin-bottom:10px}
+.spaced {
+    padding: 10px
+}
+
+.mb8 {
+    margin-bottom: 8px
+}
+
+.mb10 {
+    margin-bottom: 10px
+}
 
 /* small layout for date/time side-by-side on wide screens */
-@media(min-width:480px){
-  input[type=date],input[type=time]{width:48%;display:inline-block}
-  input[type=date]{margin-right:4%}
+@media(min-width:480px) {
+
+    input[type=date],
+    input[type=time] {
+        width: 48%;
+        display: inline-block
+    }
+
+    input[type=date] {
+        margin-right: 4%
+    }
 }
