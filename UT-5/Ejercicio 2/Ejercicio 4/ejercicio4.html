@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">Modificar tarea</div>
+
+    <div class="spaced">
+            <!-- Botón para cargar las tareas del servidor -->
+            <div class="mb8">
+                <button id="loadBtn">Cargar tareas</button>
+            </div>
+
+            <!-- Selector con las tareas cargadas -->
+            <div class="mb10">
+                <label for="taskSelect">Elige una tarea:</label>
+                <select id="taskSelect">
+                    <option value="">-- primero pulsa "Cargar tareas" --</option>
+                </select>
+            </div>
+
+            <!-- Formulario mínimo para editar la tarea seleccionada -->
+            <form id="editForm">
+                <label for="title">Título *</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="description">Descripción *</label>
+                <textarea id="description" name="description" rows="6" required></textarea>
+
+                <label for="status">Estado</label>
+                <select id="status">
+                    <option value="pendiente">Pendiente</option>
+                    <option value="haciendo">Haciendo</option>
+                    <option value="completada">Completada</option>
+                </select>
+
+                <label for="date">Fecha</label>
+                <input type="date" id="date" name="date">
+                <label for="time">Hora</label>
+                <input type="time" id="time" name="time">
+
+                <button type="submit">Guardar cambios</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="statusMsg" aria-live="polite"></div>
+
+    <script src="ejercicio4.js"></script>
+</body>
+</html>

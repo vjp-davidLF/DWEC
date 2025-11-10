@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <!-- Tarjeta con formulario -->
+    <link rel="stylesheet" href="styles.css">
+
+    <div class="card">
+        <div class="card-header">Nueva tarea</div>
+
+        <!-- Formulario mínimo para enviar una nueva tarea al servidor -->
+        <form id="taskForm">
+        <label for="title">Título *</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="description">Descripción *</label><br>
+        <textarea id="description" name="description" rows="6" required></textarea><br><br>
+
+        <label for="status">Estado</label><br>
+        <select id="status" name="status">
+            <option value="pendiente">Pendiente</option>
+            <option value="haciendo">Haciendo</option>
+            <option value="completada">Completada</option>
+        </select><br><br>
+
+        <label for="date">Fecha</label>
+        <input type="date" id="date" name="date">
+
+        <label for="time"> Hora</label>
+        <input type="time" id="time" name="time"><br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+        </form>
+    </div>
+
+    <!-- Mensajes simples para el usuario -->
+    <div id="formStatus" aria-live="polite"></div>
+
+    <script src="ejercicio3.js"></script>
+</body>
+</html>

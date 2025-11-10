@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5 - Eliminar tareas</title>
+    <!-- Estilos locales simples para esta página (inspirados en Ejercicio 3) -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">Tareas en el servidor</div>
+        <div class="spaced">
+            <div class="mb8">
+                <button id="refreshBtn">Recargar tareas</button>
+            </div>
+            <div id="status" class="mb8">Cargando...</div>
+            <div id="tasksContainer" class="grid">
+                <!-- Tarjetas de tareas con botón eliminar aparecerán aquí -->
+            </div>
+            <div id="emptyMsg" class="empty hidden">No hay tareas en el servidor.</div>
+        </div>
+    </div>
+
+    <script src="ejercicio5.js"></script>
+</body>
+</html>

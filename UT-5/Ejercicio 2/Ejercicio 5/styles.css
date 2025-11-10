@@ -1,0 +1,20 @@
+/* Minimal styles for Ejercicio 5, inspired by Ejercicio 3 */
+body{font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;margin:16px;color:#222}
+.card{max-width:720px;margin:18px auto;border:1px solid #ccc;background:#fff}
+.card-header{background:#333;color:#fff;padding:8px;text-align:center;font-weight:600}
+.spaced{padding:10px}
+.mb8{margin-bottom:8px}
+form, .grid{max-width:680px;margin:0 auto}
+label{display:block;margin:6px 0 4px}
+input,textarea,select,button{width:100%;padding:6px;margin-bottom:8px;border:1px solid #cfcfcf;background:#fafafa}
+textarea{min-height:100px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;padding:6px}
+.card .empty{padding:10px;text-align:center;color:#666}
+.hidden{display:none}
+button{cursor:pointer}
+@media(min-width:480px){input[type=date],input[type=time]{width:48%;display:inline-block}input[type=date]{margin-right:4%}}
+
+/* Estilo para tarjeta marcada como eliminada (limitación intencional)
+	- apariencia atenuada para mostrar que no se ha eliminado del DOM */
+.deleted{opacity:0.6;background:#f8f8f8}
+.deleted button{opacity:0.6}

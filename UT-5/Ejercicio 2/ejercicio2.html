@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Tareas en el servidor</h1>
+    </header>
+
+    <div class="container">
+        <div id="controls">
+            <div>
+                <button id="refreshBtn">Recargar tareas</button>
+                <button id="helpBtn" class="secondary">Ayuda</button>
+            </div>
+            <div id="status">Cargando...</div>
+        </div>
+
+        <div id="tasksContainer" class="grid">
+            <!-- Aquí se insertarán las tarjetas de tareas -->
+        </div>
+        <div id="emptyMsg" class="empty" style="display:none">No se han encontrado tareas en el servidor.</div>
+    </div>
+
+    <script src="ejercicio2.js"></script>
+</body>
+</html>

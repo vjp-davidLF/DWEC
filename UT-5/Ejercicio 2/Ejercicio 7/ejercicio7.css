@@ -1,0 +1,26 @@
+/* Copia de ejercicio6.css para el ejercicio7 (estilos sencillos) */
+body{ font-family: Arial, Helvetica, sans-serif; margin:0; padding:0; background:#f6f8fa; color:#222}
+.app-header{ background:#fff; border-bottom:1px solid #ddd; padding:8px 12px; display:flex; align-items:center }
+.app-header .logo{ font-weight:700; margin-right:16px }
+.nav-tabs{ display:flex; gap:8px }
+.nav-tab{ background:transparent; border:1px solid transparent; padding:6px 10px; cursor:pointer; border-radius:4px; color:#333 }
+.nav-tab:hover{ background:#f0f0f0 }
+.nav-tab.active{ background:#007bff; color:#fff; border-color:#007bff }
+.app-main{ padding:16px }
+.card{ background:#fff; border:1px solid #e3e3e3; padding:12px; margin:8px 0; border-radius:4px }
+.cards-grid{ display:flex; flex-wrap:wrap; gap:12px }
+.card .title{ font-weight:600; margin-bottom:6px }
+.btn{ display:inline-block; padding:8px 12px; border-radius:4px; border:1px solid #bfbfbf; background:#fff; cursor:pointer }
+.btn.primary{ background:#28a745; color:#fff; border-color:#28a745 }
+.btn.danger{ background:#c62828; color:#fff; border-color:#c62828 }
+.form-row{ margin-bottom:8px }
+.form-row label{ display:block; font-size:13px; margin-bottom:4px }
+.form-row input, .form-row textarea, .form-row select{ width:100%; padding:8px; box-sizing:border-box }
+.small-muted{ font-size:12px; color:#666 }
+.deleted{ opacity:0.5; filter:grayscale(40%) }
+.app-footer{ background:#fff; border-top:1px solid #eee; padding:8px 12px; text-align:center }
+
+/* Responsive simple */
+@media (min-width:700px){
+  .cards-grid .card{ width:calc(33% - 8px) }
+}

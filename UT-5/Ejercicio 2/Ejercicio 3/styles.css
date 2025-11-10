@@ -1,0 +1,61 @@
+/* Versión muy compacta: solo lo esencial para el diseño de tarjeta */
+body {
+    font-family: Arial;
+    margin: 20px;
+    background: #f4f7fb;
+    color: #111
+}
+
+.card {
+    width: 340px;
+    margin: 30px auto;
+    background: #fff;
+    border: 1px solid #ccc
+}
+
+.card-header {
+    background: #333;
+    color: #fff;
+    padding: 8px;
+    text-align: center;
+    font-weight: 600
+}
+
+form {
+    padding: 10px
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    background: #f9f9f9
+}
+
+textarea {
+    min-height: 120px
+}
+
+input[type=date],
+input[type=time] {
+    width: 48%;
+    display: inline-block
+}
+
+input[type=date] {
+    margin-right: 4%
+}
+
+button {
+    width: 100%;
+    padding: 8px
+}
+
+#formStatus {
+    max-width: 340px;
+    margin: 8px auto 0;
+    font-size: 13px
+}
