@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2.1 - Progresion de Salario</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .controls {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .control-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="number"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 150px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .chart-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            height: 400px;
+        }
+        #info {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #c3e6cb;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .analysis-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .analysis-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #333;
+            padding-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .stat-box {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-left: 5px solid #333;
+            color: #333;
+            padding: 18px;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .stat-label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .analysis-text {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            border-radius: 5px;
+            line-height: 1.6;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Progresion de Salario - 10 Anos</h1>
+    
+    <div class="controls">
+        <div class="control-group">
+            <label for="salarioInicial">Salario Inicial (euros/ano):</label>
+            <input type="number" id="salarioInicial" value="20000" min="1000" step="1000" />
+            <button onclick="generarGrafica()">Generar Grafica</button>
+        </div>
+    </div>
+
+    <div id="info">
+        Ingresa el salario inicial y haz clic en "Generar Grafica" para ver la progresion salarial con un aumento del 3% anual durante 10 anos.
+    </div>
+
+    <div class="chart-container">
+        <canvas id="chartCanvas"></canvas>
+    </div>
+
+    <div class="analysis-container" id="analysisContainer" style="display: none;">
+        <div class="analysis-title">Analisis de Progresion Salarial</div>
+        <div class="analysis-grid" id="analysisGrid"></div>
+        <div class="analysis-text" id="analysisText"></div>
+    </div>
+
+    <script src="ejercicio2.js"></script>
+</body>
+</html>
