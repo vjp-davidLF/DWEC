@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <header>
+        <h1>Registro de Edades</h1>
+        <p class="subtitle">Almacena y consulta la edad de los usuarios en este navegador</p>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <h2>Agregar/Consultar Usuario</h2>
+            
+            <div id="message" class="message"></div>
+            
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" placeholder="Introduce tu nombre">
+            </div>
+            
+            <div class="form-group">
+                <label for="age">Edad:</label>
+                <input type="number" id="age" placeholder="Introduce tu edad" min="1" max="120">
+            </div>
+            
+            <button id="saveBtn" class="btn">Guardar Edad</button>
+            <button id="searchBtn" class="btn btn-secondary">Consultar Edad</button>
+        </div>
+        
+        <div class="card">
+            <h2>Usuarios Registrados</h2>
+            
+            <div id="userCount">Total: 0 usuarios</div>
+            
+            <div id="usersList">
+                <!-- La tabla se generará con JavaScript -->
+                <div class="empty-state">
+                    <p>No hay usuarios registrados todavía.</p>
+                    <p>¡Agrega el primero!</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <button id="clearAllBtn" class="btn btn-secondary">Limpiar Todos</button>
+                <button id="refreshBtn" class="btn">Refrescar Lista</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Ejercicio 4 - UT6 Web Storage API | Los datos se guardan en localStorage del navegador</p>
+        <p><small>Los datos persisten aunque cierres el navegador</small></p>
+    </footer>
+
+    <script src="ejercicio4.js"></script>
+</body>
+</html>

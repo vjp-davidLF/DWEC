@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <div class="container">
+        <header>
+            <h1>Administrador de Productos</h1>
+            <p class="subtitle">Sistema de gestión de inventario con IndexedDB</p>
+        </header>
+        
+        <div class="main-content">
+            <!-- Formulario para agregar productos -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-plus-circle"></i> Agregar Producto
+                </div>
+                <div class="card-body">
+                    <div id="message" class="message"></div>
+                    
+                    <form id="productForm">
+                        <div class="form-group">
+                            <label for="item">Nombre del Producto:</label>
+                            <input type="text" id="item" placeholder="Ej: Laptop, Camiseta, Silla..." required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cantidad">Cantidad en Stock:</label>
+                            <input type="number" id="cantidad" placeholder="Ej: 10, 25, 100..." min="0" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="precioUnidad">Precio por Unidad (€):</label>
+                            <input type="number" id="precioUnidad" placeholder="Ej: 19.99, 45.50..." min="0" step="0.01" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="marca">Marca del Producto:</label>
+                            <input type="text" id="marca" placeholder="Ej: Sony, Nike, Dell...">
+                        </div>
+                        
+                        <button type="button" id="saveBtn" class="btn btn-success">
+                            <i class="fas fa-save"></i> Guardar Producto
+                        </button>
+                        <button type="button" id="clearFormBtn" class="btn btn-secondary">
+                            <i class="fas fa-eraser"></i> Limpiar Formulario
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Lista de productos -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-boxes"></i> Inventario de Productos
+                </div>
+                <div class="card-body">
+                    <div class="stats" id="stats">
+                        <!-- Estadísticas se cargarán con JavaScript -->
+                    </div>
+                    
+                    <div id="productsContainer">
+                        <!-- Tabla de productos se cargará con JavaScript -->
+                        <div class="empty-state" id="emptyState">
+                            <i class="fas fa-box-open"></i>
+                            <h3>No hay productos</h3>
+                            <p>Agrega tu primer producto usando el formulario</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <button id="refreshBtn" class="btn">
+                            <i class="fas fa-sync-alt"></i> Actualizar Lista
+                        </button>
+                        <button id="clearAllBtn" class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i> Eliminar Todos
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Ejercicio 5 - UT6 IndexedDB | Los datos se guardan en IndexedDB del navegador</p>
+            <p><small>Base de datos: "ProductsDB" | Almacén: "products"</small></p>
+        </footer>
+    </div>
+
+    <!-- Font Awesome para iconos -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <!-- Nuestros scripts -->
+    <script src="js/Producto.js"></script>
+    <script src="js/BaseDatos.js"></script>
+    <script src="js/ejercicio4.js"></script>
+</body>
+</html>
