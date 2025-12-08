@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bares de Copas - Cáceres</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-glass-martini-alt"></i> Bares de Copas - Cáceres</h1>
+        <p class="subtitle">Mapa interactivo de los bares de copas de la ciudad</p>
+    </header>
+    
+    <div class="container">
+        <div class="sidebar">
+            <div class="controls">
+                <h3>Filtros:</h3>
+                <button class="filter-btn active" data-filter="all">Todos (14)</button>
+                <button class="filter-btn" data-filter="food">Con comida (8)</button>
+                <button class="filter-btn" data-filter="nofood">Sin comida (6)</button>
+            </div>
+            
+            <div class="bar-list" id="barList">
+                <!-- Los bares se cargarán aquí con JavaScript -->
+                <p>Cargando bares...</p>
+            </div>
+        </div>
+        
+        <div id="map"></div>
+    </div>
+    
+    <footer>
+        <p>Ejercicio 3 - UT6 Geolocalización | Datos de ejemplo para Cáceres</p>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Font Awesome (solo para el icono del título) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <!-- Nuestro script -->
+    <script src="ejercicio3.js"></script>
+</body>
+</html>
