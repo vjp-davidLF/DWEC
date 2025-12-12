@@ -1,7 +1,12 @@
-// Coordenadas de Cáceres
+// ====================================
+// BUSCADOR DE BARES EN CÁCERES
+// ====================================
+
+// Coordenadas del centro de Cáceres (Extremadura)
 const CACERES_CENTER = [39.4752, -6.3724];
 
-// Datos de bares de copas (ejemplo)
+// Lista de bares en Cáceres con sus características
+// Cada bar tiene: nombre, teléfono, si sirve comida, ubicación y descripción
 const bares = [
     {
         id: 1,
@@ -117,12 +122,13 @@ const bares = [
     }
 ];
 
-// Variables globales
+// Variables globales para el mapa
 let map = null;
-let markers = [];
-let currentFilter = 'all';
+let markers = [];  // Array para guardar referencias a los marcadores
+let currentFilter = 'all';  // Filtro actual: 'all', 'food', 'nofood'
 
-// Iconos personalizados
+// Iconos personalizados para diferencia bares con y sin comida
+// Verde para los que sirven comida 🍽
 const iconWithFood = L.divIcon({
     html: '<div style="background-color: #2ecc71; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">🍽</div>',
     className: 'custom-icon',
@@ -130,6 +136,7 @@ const iconWithFood = L.divIcon({
     iconAnchor: [15, 15]
 });
 
+// Rojo para los que no sirven comida 🍸
 const iconNoFood = L.divIcon({
     html: '<div style="background-color: #e74c3c; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">🍸</div>',
     className: 'custom-icon',
@@ -138,23 +145,26 @@ const iconNoFood = L.divIcon({
 });
 
 // Inicializar el mapa
+// Se ejecuta cuando carga la página
 function initMap() {
+    // Crear el mapa centrado en Cáceres
     map = L.map('map').setView(CACERES_CENTER, 14);
     
+    // Cargar la capa de OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap'
     }).addTo(map);
     
-    // Crear marcadores para todos los bares
+    // Crear los marcadores para todos los bares
     createMarkers();
     
-    // Cargar lista de bares
+    // Mostrar lista de bares en el sidebar
     renderBarList();
     
-    // Configurar filtros
+    // Configurar los botones de filtro
     setupFilters();
     
-    // Actualizar contadores
+    // Actualizar números en los botones de filtro
     updateCounters();
 }
 

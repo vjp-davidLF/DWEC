@@ -1,53 +1,68 @@
-// Variables globales
-let map = null;
-let marker = null;
-let watchId = null;
+// Variables globales para gestionar el mapa y la ubicación
+let map = null;  // El mapa de Leaflet
+let marker = null;  // El marcador que indica donde estamos
+let watchId = null;  // ID para poder parar el seguimiento después
 
-// Icono personalizado
+// Icono personalizado - usa un icono de geolocalización de flaticon
+// TODO: Cambiar icono si flaticon se cae (usar Font Awesome como alternativa)
 const customIcon = L.icon({
     iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png', 
     iconSize: [40, 40],
-    iconAnchor: [20, 40],
+    iconAnchor: [20, 40],  // Centro del icono en su punto
     popupAnchor: [0, -40]
 });
 
-// Inicializar el mapa
+// Inicializar el mapa con la ubicación del usuario
+// Solo se crea una vez, luego solo actualiza la vista
 function initMap(lat, lon) {
     if (!map) {
+        // Primera vez: crear el mapa centrado en las coordenadas
         map = L.map('map').setView([lat, lon], 15);
         
+        // Cargar el mapa de OpenStreetMap (gratuito y sin API key)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
     }
     
-    // Actualizar vista al centro
+    // Actualizar la vista del mapa a la nueva ubicación
     map.setView([lat, lon], map.getZoom());
 }
 
-// Actualizar marcador
+// Actualizar el marcador en el mapa
+// Si ya existe lo movemos, si no lo creamos
 function updateMarker(lat, lon) {
     if (marker) {
+        // Si el marcador ya está creado, solo lo movemos a las nuevas coordenadas
         marker.setLatLng([lat, lon]);
     } else {
+        // Primera vez: crear el marcador en la posición actual
         marker = L.marker([lat, lon], { icon: customIcon }).addTo(map);
     }
     
-    // Agregar popup
-    marker.bindPopup(`<b>Estás aquí</b><br>Lat: ${lat.toFixed(6)}<br>Lon: ${lon.toFixed(6)}`).openPopup();
+    // Mostrar popup con las coordenadas (útil para ver precisión)
+    const coordText = `<b>¡Estás aquí!</b><br>Lat: ${lat.toFixed(6)}<br>Lon: ${lon.toFixed(6)}`;
+    marker.bindPopup(coordText).openPopup();
 }
 
-// Mostrar coordenadas en el panel
+// Mostrar las coordenadas actuales en el panel de info
+// También muestra la precisión (importante para saber si el GPS es confiable)
 function updateCoordsDisplay(lat, lon, accuracy) {
+    const latText = lat.toFixed(6);
+    const lonText = lon.toFixed(6);
+    const precisionText = accuracy ? accuracy.toFixed(2) + ' m' : 'N/A';
+    
     document.getElementById('coords').innerHTML = `
-        Latitud: ${lat.toFixed(6)}<br>
-        Longitud: ${lon.toFixed(6)}<br>
-        Precisión: ${accuracy ? accuracy.toFixed(2) + ' m' : 'N/A'}
+        Latitud: ${latText}<br>
+        Longitud: ${lonText}<br>
+        Precisión: ${precisionText}
     `;
     
+    // Actualizar hora de la última actualización
     const now = new Date();
+    const timeText = now.toLocaleTimeString();
     document.getElementById('lastUpdate').innerHTML = `
-        Última actualización: ${now.toLocaleTimeString()}
+        Última actualización: ${timeText}
     `;
 }
 

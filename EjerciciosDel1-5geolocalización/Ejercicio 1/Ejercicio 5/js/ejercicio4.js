@@ -1,55 +1,64 @@
-// Elementos del DOM
-const productForm = document.getElementById('productForm');
-const itemInput = document.getElementById('item');
-const cantidadInput = document.getElementById('cantidad');
-const precioInput = document.getElementById('precioUnidad');
-const marcaInput = document.getElementById('marca');
-const saveBtn = document.getElementById('saveBtn');
-const clearFormBtn = document.getElementById('clearFormBtn');
-const refreshBtn = document.getElementById('refreshBtn');
-const clearAllBtn = document.getElementById('clearAllBtn');
-const messageDiv = document.getElementById('message');
-const productsContainer = document.getElementById('productsContainer');
-const statsContainer = document.getElementById('stats');
-const emptyState = document.getElementById('emptyState');
+// ========================================
+// GESTOR DE INVENTARIO CON INDEXEDDB
+// ========================================
+// Este es un ejercicio avanzado que usa IndexedDB
+// (una base de datos en el navegador, más potente que localStorage)
+
+// Elementos del DOM que necesitamos
+const productForm = document.getElementById('productForm');  // Formulario
+const itemInput = document.getElementById('item');  // Nombre del producto
+const cantidadInput = document.getElementById('cantidad');  // Cantidad
+const precioInput = document.getElementById('precioUnidad');  // Precio por unidad
+const marcaInput = document.getElementById('marca');  // Marca
+const saveBtn = document.getElementById('saveBtn');  // Botón guardar
+const clearFormBtn = document.getElementById('clearFormBtn');  // Limpiar formulario
+const refreshBtn = document.getElementById('refreshBtn');  // Recargar lista
+const clearAllBtn = document.getElementById('clearAllBtn');  // Eliminar todo
+const messageDiv = document.getElementById('message');  // Mostrar mensajes
+const productsContainer = document.getElementById('productsContainer');  // Tabla de productos
+const statsContainer = document.getElementById('stats');  // Estadísticas
+const emptyState = document.getElementById('emptyState');  // Mensaje cuando no hay productos
 
 // Variables globales
-let editingProductId = null;
+let editingProductId = null;  // ID del producto que estamos editando (null si creamos uno nuevo)
 
-// Inicializar la aplicación
+// Inicializar la aplicación cuando cargue la página
+// Abre la BD y carga los productos
 document.addEventListener('DOMContentLoaded', async function() {
     try {
-        // Abrir la base de datos
+        // Abrir (o crear) la base de datos IndexedDB
         await manejadorDB.abrirDB();
         showMessage('Base de datos conectada exitosamente', 'success');
         
-        // Cargar productos
+        // Cargar y mostrar todos los productos guardados
         await loadProducts();
         
-        // Configurar eventos
+        // Configurar todos los eventos de los botones
         setupEventListeners();
         
     } catch (error) {
+        // Si algo falla, mostrar el error
         console.error('Error al inicializar:', error);
         showMessage(`Error al conectar con la base de datos: ${error.message}`, 'error');
     }
 });
 
-// Configurar eventos
+// Configurar todos los eventos de los botones
+// Cada botón ejecuta una función diferente
 function setupEventListeners() {
-    // Guardar producto
+    // Guardar nuevo producto o actualizar uno existente
     saveBtn.addEventListener('click', saveProduct);
     
-    // Limpiar formulario
+    // Limpiar el formulario
     clearFormBtn.addEventListener('click', clearForm);
     
-    // Actualizar lista
+    // Actualizar y recargar la lista
     refreshBtn.addEventListener('click', loadProducts);
     
-    // Eliminar todos los productos
+    // Eliminar TODOS los productos (con confirmación)
     clearAllBtn.addEventListener('click', clearAllProducts);
     
-    // También guardar con Enter en cualquier campo
+    // Permitir guardar al presionar Enter en cualquier campo
     productForm.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             e.preventDefault();
@@ -58,7 +67,9 @@ function setupEventListeners() {
     });
 }
 
-// Mostrar mensaje
+// Mostrar un mensaje al usuario
+// Los mensajes de éxito desaparecen solos después de 3 segundos
+// Los errores se mantienen hasta que el usuario lo vea
 function showMessage(text, type = 'info') {
     messageDiv.textContent = text;
     messageDiv.className = 'message ' + type;
@@ -71,31 +82,35 @@ function showMessage(text, type = 'info') {
     }
 }
 
-// Validar formulario
+// Validar que el formulario tenga datos válidos
+// Devuelve true si todo es válido, false si hay algún error
 function validateForm() {
     const item = itemInput.value.trim();
     const cantidad = cantidadInput.value.trim();
     const precio = precioInput.value.trim();
     
+    // Validar nombre del producto
     if (!item) {
         showMessage('El nombre del producto es requerido', 'error');
         itemInput.focus();
         return false;
     }
     
+    // Validar cantidad
     if (!cantidad || isNaN(cantidad) || parseInt(cantidad) < 0) {
         showMessage('La cantidad debe ser un número válido (0 o mayor)', 'error');
         cantidadInput.focus();
         return false;
     }
     
+    // Validar precio
     if (!precio || isNaN(precio) || parseFloat(precio) < 0) {
         showMessage('El precio debe ser un número válido (0 o mayor)', 'error');
         precioInput.focus();
         return false;
     }
     
-    return true;
+    return true;  // Todo es válido
 }
 
 // Limpiar formulario

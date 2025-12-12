@@ -1,13 +1,17 @@
-// Variables globales
+// =====================================
+// EJERCICIO 2: MAPA DE PLASENCIA
+// =====================================
+// Variables para gestionar los elementos del mapa
 let map = null;
-let markers = [];
-let circles = [];
-let polygons = [];
+let markers = [];  // Array de marcadores
+let circles = [];  // Array de círculos
+let polygons = [];  // Array de polígonos
 
-// Coordenadas de Plasencia (centro del mapa)
+// Coordenadas del centro de Plasencia (Extremadura, España)
 const PLASENCIA_CENTER = [40.0286, -6.0883];
 
-// Datos de los puntos de interés
+// Datos de los puntos de interés de Plasencia
+// Cada punto tiene info diferente según su tipo (marcador, círculo o polígono)
 const puntosInteres = {
     ayuntamiento: {
         nombre: "Ayuntamiento de Plasencia",
@@ -70,33 +74,36 @@ const puntosInteres = {
     }
 };
 
-// Inicializar el mapa
+// Inicializar el mapa de Plasencia
+// Crea el mapa, añade la capa base, dibuja elementos y configura eventos
 function initMap() {
-    // Crear mapa centrado en Plasencia
+    // Crear mapa centrado en las coordenadas de Plasencia
     map = L.map('map').setView(PLASENCIA_CENTER, 14);
     
-    // Añadir capa de OpenStreetMap
+    // Añadir capa de OpenStreetMap (mapa base)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         maxZoom: 19
     }).addTo(map);
     
-    // Crear todos los elementos del mapa
+    // Crear todos los elementos del mapa (marcadores, círculos, polígonos)
     crearElementosMapa();
     
-    // Configurar eventos para la leyenda
+    // Configurar los botones de la leyenda para que sean clickeables
     configurarLeyenda();
     
-    // Añadir control de escala
+    // Añadir una escala en la esquina inferior izquierda
     L.control.scale({imperial: false, position: 'bottomleft'}).addTo(map);
 }
 
 // Crear todos los elementos en el mapa
+// Recorre los puntos de interés y los dibuja según su tipo
 function crearElementosMapa() {
-    // Recorrer todos los puntos de interés
+    // Recorrer todos los puntos de interés guardados
     Object.keys(puntosInteres).forEach(key => {
         const punto = puntosInteres[key];
         
+        // Dibujar el elemento según su tipo
         switch(punto.tipo) {
             case 'marker':
                 crearMarcador(punto, key);
@@ -107,6 +114,7 @@ function crearElementosMapa() {
             case 'polygon':
                 crearPoligono(punto, key);
                 break;
+            // default: no hacer nada si el tipo no es válido
         }
     });
 }

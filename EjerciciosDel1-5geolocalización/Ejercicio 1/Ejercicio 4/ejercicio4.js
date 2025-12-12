@@ -1,35 +1,43 @@
-// Clave para localStorage
+// ====================================
+// GESTOR DE EDADES CON LOCALSTORAGE
+// ====================================
+// Nota: Usa localStorage del navegador para guardar los usuarios
+// Los datos persisten incluso después de cerrar el navegador
+
+// Clave para acceder al localStorage (todas las edades se guardan con esta clave)
 const STORAGE_KEY = 'userAges';
 
-// Elementos del DOM
-const nameInput = document.getElementById('name');
-const ageInput = document.getElementById('age');
-const saveBtn = document.getElementById('saveBtn');
-const searchBtn = document.getElementById('searchBtn');
-const clearAllBtn = document.getElementById('clearAllBtn');
-const refreshBtn = document.getElementById('refreshBtn');
-const messageDiv = document.getElementById('message');
-const userCountDiv = document.getElementById('userCount');
-const usersListDiv = document.getElementById('usersList');
+// Elementos del DOM que vamos a manipular
+const nameInput = document.getElementById('name');  // Input para el nombre
+const ageInput = document.getElementById('age');  // Input para la edad
+const saveBtn = document.getElementById('saveBtn');  // Botón guardar
+const searchBtn = document.getElementById('searchBtn');  // Botón buscar
+const clearAllBtn = document.getElementById('clearAllBtn');  // Botón limpiar todo
+const refreshBtn = document.getElementById('refreshBtn');  // Botón actualizar
+const messageDiv = document.getElementById('message');  // Div para mensajes
+const userCountDiv = document.getElementById('userCount');  // Mostrar total de usuarios
+const usersListDiv = document.getElementById('usersList');  // Tabla de usuarios
 
-// Cargar usuarios al iniciar
+// Cargar usuarios al iniciar la página
+// Configurar todos los eventos de los botones
 document.addEventListener('DOMContentLoaded', function() {
+    // Cargar usuarios guardados del localStorage
     loadUsers();
     
-    // Configurar eventos
+    // Configurar eventos de los botones
     saveBtn.addEventListener('click', saveUser);
     searchBtn.addEventListener('click', searchUser);
     clearAllBtn.addEventListener('click', clearAllUsers);
     refreshBtn.addEventListener('click', loadUsers);
     
-    // También buscar al presionar Enter en el campo de nombre
+    // Permitir buscar al presionar Enter en el campo de nombre
     nameInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             searchUser();
         }
     });
     
-    // También guardar al presionar Enter en el campo de edad
+    // Permitir guardar al presionar Enter en el campo de edad
     ageInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             saveUser();
@@ -37,16 +45,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Obtener usuarios de localStorage
+// Obtener todos los usuarios del localStorage
+// Retorna un objeto con pares nombre-edad
 function getUsers() {
     const usersJSON = localStorage.getItem(STORAGE_KEY);
     if (usersJSON) {
+        // Si hay datos, convertirlos de JSON a objeto
         return JSON.parse(usersJSON);
     }
+    // Si no hay datos, retornar un objeto vacío
     return {};
 }
 
 // Guardar usuarios en localStorage
+// Convierte el objeto a JSON y lo guarda
 function saveUsers(users) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
 }

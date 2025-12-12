@@ -22,7 +22,7 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: rgb(205, 205, 214);
             min-height: 100vh;
             padding: 20px;
         }
@@ -32,12 +32,11 @@
             margin: 0 auto;
             background-color: white;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
         
         header {
-            background: linear-gradient(90deg, #2c3e50 0%, #3498db 100%);
+            background: rgb(122, 85, 215);
             color: white;
             padding: 25px 30px;
             text-align: center;
@@ -103,8 +102,7 @@
             align-items: center;
             margin-bottom: 12px;
             padding: 8px 12px;
-            border-radius: 6px;
-            transition: background-color 0.3s;
+            border-radius: 6px; 
             cursor: pointer;
         }
         
@@ -223,8 +221,7 @@
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-map-marked-alt"></i> Plasencia - Puntos de Interés</h1>
-            <p>Explora los principales lugares de Plasencia en este mapa interactivo. Haz clic en los elementos del mapa o en la leyenda para obtener más información.</p>
+            <h1> Plasencia - Puntos de Interés</h1>
         </header>
         
         <div class="content">
@@ -232,7 +229,7 @@
             
             <div class="sidebar">
                 <div class="legend">
-                    <h3><i class="fas fa-map-pin"></i> Leyenda del Mapa</h3>
+                    <h3> Leyenda del Mapa</h3>
                     <div class="legend-item active" data-target="ayuntamiento">
                         <div class="legend-color" style="background-color: #e74c3c;"></div>
                         <div class="legend-text">Ayuntamiento (Marcador)</div>
@@ -252,7 +249,7 @@
                 </div>
                 
                 <div class="info-box" id="location-info">
-                    <h3><i class="fas fa-info-circle"></i> Información del Punto</h3>
+                    <h3> Información del Punto</h3>
                     <p id="info-text">Selecciona un punto en el mapa o en la leyenda para ver su información detallada.</p>
                     <div class="coordinates" id="coords-info">
                         Coordenadas: --
@@ -260,7 +257,7 @@
                 </div>
                 
                 <div class="info-box">
-                    <h3><i class="fas fa-map-signs"></i> Acerca de este Mapa</h3>
+                    <h3> Acerca de este Mapa</h3>
                     <p>Este mapa muestra 4 puntos de interés importantes en Plasencia, utilizando diferentes formas de representación según el ejercicio:</p>
                     <ul style="padding-left: 20px; margin-top: 10px; color: #555;">
                         <li><strong>Marcador:</strong> Para el Ayuntamiento</li>
@@ -273,8 +270,8 @@
         </div>
         
         <footer>
-            <p>Ejercicio 2 - UT6 Geolocalización | Mapa creado con Leaflet y OpenStreetMap</p>
-            <p>Coordenadas de Plasencia: 40.0286° N, 6.0883° W</p>
+            <p>Ejercicio 2 - UT6 Geolocalización</p>
+           
         </footer>
     </div>
 
