@@ -1,0 +1,36 @@
+{
+  "electronica": [
+    {
+      "id": 1,
+      "titulo": "Energy Sistem Frame Speaker Altavoz Bluetooth East Beach 50W",
+      "descripcion": "Potente altavoz tras un lienzo exclusivo con marco de madera, la combinación entre arte y música para integrarse con el resto de la decoración de tu casa. Sorprendete con sus 50 W de potencia, tecnología Bluetooth 5.0, TWS y reproductor MP3 USB y microSD.",
+      "precio": "133",
+      "foto": "https://thumb.pccomponentes.com/w-530-530/articles/21/218983/a2.jpg"
+    },
+    {
+      "id": 2,
+      "titulo": "Samsung UE85RLK0055 65 LED UltraHD 4K",
+      "descripcion": "Televisor Samsung 65 pulgadas LED UltraHD 4K con HDR.",
+      "precio": "660.50",
+      "foto": "https://thumb.pccomponentes.com/w-530-530/articles/15/150000/150000.jpg"
+    }
+  ],
+  "muebles": [
+    {
+      "id": 3,
+      "titulo": "Silla de Oficina Ergonómica",
+      "descripcion": "Silla ergonómica con soporte lumbar y reposabrazos ajustables.",
+      "precio": "89.99",
+      "foto": "https://thumb.pccomponentes.com/w-530-530/articles/25/250000/250000.jpg"
+    }
+  ],
+  "decoracion": [
+    {
+      "id": 4,
+      "titulo": "Lámpara de Mesa Moderna",
+      "descripcion": "Lámpara de diseño moderno con luz LED regulable.",
+      "precio": "45.50",
+      "foto": "https://thumb.pccomponentes.com/w-530-530/articles/30/300000/300000.jpg"
+    }
+  ]
+}
