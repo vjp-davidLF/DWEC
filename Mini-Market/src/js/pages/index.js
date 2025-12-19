@@ -2,41 +2,32 @@ import { crearHeader } from '../components/header.js';
 import { Producto } from '../clases/Producto.js';
 import '../../styles/main.css';
 
-// Cuando la página carga, configuramos todo
 document.addEventListener('DOMContentLoaded', async () => {
-  // Primero creamos el menú de navegación
   crearHeader();
-  
-  // Luego cargamos algunos productos destacados para la página principal
   await cargarProductosDestacados();
-  
-  // Por último inicializamos Bootstrap si está disponible
   inicializarBootstrap();
 });
 
-// Carga productos de todas las categorías para mostrar en la home
-// Muestra 1 producto de cada categoría
+/**
+ * Carga los productos destacados desde el servidor (uno de cada categoría)
+ * @returns {Promise<void>}
+ */
 async function cargarProductosDestacados() {
   try {
-    // Cargar un producto de cada categoría
-    const [electronica, muebles, decoracion] = await Promise.all([
-      fetch('http://localhost:3000/electronica').then(r => r.json()),
-      fetch('http://localhost:3000/muebles').then(r => r.json()),
-      fetch('http://localhost:3000/decoracion').then(r => r.json())
-    ]);
+    const electronica = await fetch('http://localhost:3000/electronica').then(r => r.json());
+    const muebles = await fetch('http://localhost:3000/muebles').then(r => r.json());
+    const decoracion = await fetch('http://localhost:3000/decoracion').then(r => r.json());
     
     const contenedor = document.getElementById('productosDestacados');
     if (!contenedor) return;
     
-    // Limpiar contenedor
     contenedor.innerHTML = '';
     
-    // Mostrar 1 producto de cada categoría
     const productosDestacados = [
       electronica[0],
       muebles[0],
       decoracion[0]
-    ].filter(p => p); // Filtrar undefined por si alguna categoría está vacía
+    ].filter(p => p);
     
     productosDestacados.forEach(producto => {
       const divProducto = Producto.getDivFromProducto(producto);
@@ -49,8 +40,10 @@ async function cargarProductosDestacados() {
   }
 }
 
+/**
+ * Inicializa los componentes de Bootstrap en la página
+ */
 function inicializarBootstrap() {
-  // Inicializar dropdowns de Bootstrap
   if (typeof bootstrap !== 'undefined') {
     const dropdowns = document.querySelectorAll('.dropdown-toggle');
     dropdowns.forEach(dropdown => {
@@ -59,6 +52,10 @@ function inicializarBootstrap() {
   }
 }
 
+/**
+ * Muestra un mensaje de error en el contenedor de productos
+ * @param {string} mensaje - Mensaje de error a mostrar
+ */
 function mostrarError(mensaje) {
   const contenedor = document.getElementById('productosDestacados');
   if (contenedor) {

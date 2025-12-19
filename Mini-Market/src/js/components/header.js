@@ -1,12 +1,16 @@
-// Función auxiliar para marcar la página activa en el menú
-// Revisa la URL actual y añade la clase 'active' si coincide
+/**
+ * Determina si la página actual debe estar marcada como activa
+ * @param {string} pagina - Nombre de la página sin extensión
+ * @returns {string} 'active' si es la página actual, '' en caso contrario
+ */
 function activarPagina(pagina) {
   const currentPage = window.location.pathname.split('/').pop();
   return currentPage === `${pagina}.html` ? 'active' : '';
 }
 
-// Crea el header de navegación y lo añade a todas las páginas
-// Incluye menú responsive, categorías y carrito de compra
+/**
+ * Crea e inserta el header de navegación en la página
+ */
 export function crearHeader() {
   const header = document.createElement('header');
   header.className = 'navbar';
@@ -29,10 +33,8 @@ export function crearHeader() {
     </div>
   `;
   
-  // Insertar el header al principio del body
   document.body.insertBefore(header, document.body.firstChild);
   
-  // Actualizar el contador del carrito si la clase está disponible
   if (typeof Carrito !== 'undefined') {
     Carrito.actualizacabeceraCarrito();
   }

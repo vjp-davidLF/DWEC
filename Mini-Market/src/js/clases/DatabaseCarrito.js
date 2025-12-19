@@ -2,10 +2,12 @@ const DB_NAME = 'mini-market-db';
 const DB_VERSION = 1;
 const STORE_NAME = 'carrito';
 
-// Clase para manejar IndexedDB y guardar el carrito del usuario
-// Todo se guarda en el navegador, así no se pierde al recargar
 export class DatabaseCarrito {
-    // Abre (o crea) la base de datos IndexedDB
+    
+    /**
+     * Abre la base de datos IndexedDB para el carrito
+     * @returns {Promise<IDBDatabase>} Promesa que resuelve con la instancia de la base de datos
+     */
     static openDatabase() {
         return new Promise((resolve, reject) => {
             const request = indexedDB.open(DB_NAME, DB_VERSION);
@@ -22,7 +24,11 @@ export class DatabaseCarrito {
         });
     }
 
-    // Obtiene todos los productos guardados en el carrito
+    /**
+     * Obtiene todos los productos del carrito
+     * @param {IDBDatabase} db - Instancia de la base de datos
+     * @returns {Promise<Array>} Promesa que resuelve con un array de productos
+     */
     static getAllProducts(db) {
         return new Promise((resolve, reject) => {
             const transaction = db.transaction([STORE_NAME], 'readonly');
@@ -34,7 +40,12 @@ export class DatabaseCarrito {
         });
     }
 
-    // Busca un producto específico por su ID
+    /**
+     * Obtiene un producto específico por su clave
+     * @param {IDBDatabase} db - Instancia de la base de datos
+     * @param {number} key - Clave del producto a buscar
+     * @returns {Promise<Object>} Promesa que resuelve con el producto encontrado
+     */
     static getProduct(db, key) {
         return new Promise((resolve, reject) => {
             const transaction = db.transaction([STORE_NAME], 'readonly');
@@ -46,7 +57,12 @@ export class DatabaseCarrito {
         });
     }
 
-    // Guarda un nuevo producto en el carrito
+    /**
+     * Inserta un nuevo producto en el carrito
+     * @param {IDBDatabase} db - Instancia de la base de datos
+     * @param {Object} producto - Producto a insertar
+     * @returns {Promise<number>} Promesa que resuelve con el ID del producto insertado
+     */
     static insertProduct(db, producto) {
         return new Promise((resolve, reject) => {
             const transaction = db.transaction([STORE_NAME], 'readwrite');
@@ -58,7 +74,13 @@ export class DatabaseCarrito {
         });
     }
 
-    // Actualiza un producto que ya existe en el carrito
+    /**
+     * Actualiza un producto existente en el carrito
+     * @param {IDBDatabase} db - Instancia de la base de datos
+     * @param {Object} product - Producto con los datos actualizados
+     * @param {number|null} key - Clave del producto (opcional)
+     * @returns {Promise<void>} Promesa que resuelve cuando se completa la actualización
+     */
     static updateProduct(db, product, key = null) {
         return new Promise((resolve, reject) => {
             const transaction = db.transaction([STORE_NAME], 'readwrite');
@@ -70,7 +92,12 @@ export class DatabaseCarrito {
         });
     }
 
-    // Elimina un producto del carrito por su ID
+    /**
+     * Elimina un producto del carrito
+     * @param {IDBDatabase} db - Instancia de la base de datos
+     * @param {number} key - Clave del producto a eliminar
+     * @returns {Promise<void>} Promesa que resuelve cuando se completa la eliminación
+     */
     static deleteProduct(db, key) {
         return new Promise((resolve, reject) => {
             const transaction = db.transaction([STORE_NAME], 'readwrite');
@@ -82,7 +109,10 @@ export class DatabaseCarrito {
         });
     }
 
-    // Elimina completamente la base de datos (usar con cuidado!)
+    /**
+     * Elimina completamente la base de datos del carrito
+     * @returns {Promise<void>} Promesa que resuelve cuando se completa la eliminación
+     */
     static deleteDatabase() {
         return new Promise((resolve, reject) => {
             const request = indexedDB.deleteDatabase(DB_NAME);

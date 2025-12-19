@@ -1,8 +1,12 @@
 import { Carrito } from './Carrito.js';
 
 export class Producto {
-  // Convierte un producto del servidor en una tarjeta HTML
-  // Crea todo el HTML necesario y añade el evento de click al botón
+  
+  /**
+   * Crea un elemento div HTML que representa un producto
+   * @param {Object} producto - Producto del servidor
+   * @returns {HTMLDivElement} Elemento div con la tarjeta del producto
+   */
   static getDivFromProducto(producto) {
     const div = document.createElement('div');
     div.className = 'col-md-4 mb-4';
@@ -22,18 +26,20 @@ export class Producto {
       </div>
     `;
     
-    // Evento para añadir al carrito
     const btn = div.querySelector('.btn-add-cart');
     btn.addEventListener('click', async () => {
-      const productoData = JSON.parse(btn.dataset.producto);
-      await Carrito.anadirProductoCarrito(productoData);
+      const prod = JSON.parse(btn.dataset.producto);
+      await Carrito.anadirProductoCarrito(prod);
     });
     
     return div;
   }
 
-  // Convierte un producto del carrito en una fila de tabla
-  // Se usa para mostrar los productos en la página del carrito
+  /**
+   * Crea un elemento tr HTML que representa un producto en el carrito
+   * @param {Object} productoBD - Producto de la base de datos local (IndexedDB)
+   * @returns {HTMLTableRowElement} Elemento tr con los datos del producto
+   */
   static getTrFromProductoBD(productoBD) {
     const tr = document.createElement('tr');
     tr.className = 'producto';
@@ -43,7 +49,9 @@ export class Producto {
              style="width: 80px; height: 80px; object-fit: cover;">
       </td>
       <td class="align-middle">${productoBD.titulo}</td>
+      <td class="align-middle cantidad-producto">${productoBD.cantidad || 1}</td>
       <td class="align-middle precio-producto">${productoBD.precio} €</td>
+      <td class="align-middle precio-total">${(parseFloat(productoBD.precio) * (productoBD.cantidad || 1)).toFixed(2)} €</td>
       <td class="align-middle">
         <button class="btn btn-danger btn-sm btn-eliminar" 
                 data-id="${productoBD.id}">
@@ -52,7 +60,6 @@ export class Producto {
       </td>
     `;
     
-    // Evento para eliminar del carrito
     const btnEliminar = tr.querySelector('.btn-eliminar');
     btnEliminar.addEventListener('click', async () => {
       await Carrito.eliminaProductoCarrito(productoBD.id, tr);

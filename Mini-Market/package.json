@@ -1,7 +1,7 @@
 {
-  "name": "sporttech-ut6",
+  "name": "mini-market",
   "version": "1.0.0",
-  "description": "Tienda online de tecnología deportiva - Proyecto UT6 - Diseño de Aplicaciones Web",
+  "description": "Tienda online",
   "main": "index.js",
   "scripts": {
     "lanzarRAM": "webpack serve --mode development --open",
@@ -9,17 +9,13 @@
     "server": "cd server && npm start"
   },
   "keywords": [
-    "sporttech",
     "tienda",
-    "deportes",
-    "tecnologia",
-    "ut6",
-    "webpack",
-    "json-server"
+    "webpack"
   ],
-  "author": "Tu Nombre Completo",
+  "author": "David",
   "license": "ISC",
   "devDependencies": {
+    "copy-webpack-plugin": "^13.0.1",
     "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.5",
     "style-loader": "^4.0.0",

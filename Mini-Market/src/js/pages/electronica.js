@@ -4,7 +4,11 @@ import '../../styles/main.css';
 
 const API_BASE = 'http://localhost:3000';
 
-// Función para traer productos desde el servidor JSON
+/**
+ * Obtiene los productos de una categoría específica desde el servidor
+ * @param {string} categoria - Nombre de la categoría a obtener
+ * @returns {Promise<Array>} Promesa que resuelve con el array de productos
+ */
 async function fetchProductos(categoria) {
     try {
         const respuesta = await fetch(`${API_BASE}/${categoria}`);
@@ -18,14 +22,11 @@ async function fetchProductos(categoria) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Creamos el menú de navegación
     crearHeader();
     
-    // Traemos los productos de electrónica desde el servidor
     const productos = await fetchProductos('electronica');
     const contenedor = document.getElementById('productos');
     
-    // Mostramos los productos en la página
     if (productos.length > 0) {
         productos.forEach(producto => {
             const card = document.createElement('div');
@@ -50,10 +51,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             contenedor.appendChild(card);
         });
         
-        // Añadimos los eventos click a todos los botones de compra
         document.querySelectorAll('.comprar').forEach(boton => {
-            boton.addEventListener('click', async (e) => {
-                const id = e.target.dataset.id;
+            boton.addEventListener('click', async (evento) => {
+                const id = evento.target.dataset.id;
                 const producto = productos.find(p => p.id == id);
                 if (producto) {
                     await Carrito.anadirProductoCarrito(producto);
@@ -65,6 +65,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         contenedor.innerHTML = '<p class="no-productos">No hay productos de electrónica disponibles.</p>';
     }
     
-    // Actualizamos el contador del carrito en el header
     await Carrito.actualizacabeceraCarrito();
 });

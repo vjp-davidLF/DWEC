@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+// configuracion de webpack
 module.exports = {
   entry: {
     index: './src/js/pages/index.js',
@@ -12,15 +14,16 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-    clean: true,  
+    clean: true,
   },
   module: {
     rules: [
       {
-        test: /\.css$/i,  
+        test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
       {
+        // para las imagenes
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
         type: 'asset/resource',
         generator: {
@@ -55,19 +58,21 @@ module.exports = {
       filename: 'cesta.html',
       chunks: ['cesta'],
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'src/images',
+          to: 'images',
+        },
+      ],
+    }),
   ],
   devServer: {
-    static: [
-      {
-        directory: path.join(__dirname, 'dist'),
-      },
-      {
-        directory: path.join(__dirname, 'src'),
-        publicPath: '/'
-      }
-    ],
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
     port: 8080,
-    hot: true,  
-    open: true, 
+    hot: true,
+    open: true,
   },
 };

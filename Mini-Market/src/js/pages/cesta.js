@@ -4,21 +4,15 @@ import { Carrito } from '../clases/Carrito.js';
 import { DatabaseCarrito } from '../clases/DatabaseCarrito.js';
 import '../../styles/main.css';
 
-// Cuando carga la página del carrito, configuramos todo
 document.addEventListener('DOMContentLoaded', async () => {
-  // Primero creamos el header
   crearHeader();
-  
-  // Mostramos todos los productos que el usuario tiene en el carrito
   await mostrarProductosCarrito();
   
-  // Conectamos el botón de finalizar compra
   const btnFinalizar = document.getElementById('pagar');
   if (btnFinalizar) {
     btnFinalizar.addEventListener('click', finalizarCompra);
   }
   
-  // Conectar botón de vaciar carrito
   const btnVaciar = document.getElementById('vaciar-carrito');
   if (btnVaciar) {
     btnVaciar.addEventListener('click', async () => {
@@ -34,7 +28,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
   
-  // Conectar botón de seguir comprando
   const btnContinuar = document.getElementById('continuar-comprando');
   if (btnContinuar) {
     btnContinuar.addEventListener('click', () => {
@@ -43,8 +36,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-// Muestra todos los productos que hay en el carrito
-// Si está vacío, muestra un mensaje bonito
+/**
+ * Muestra todos los productos del carrito en la tabla
+ * Calcula el total y actualiza el resumen del pedido
+ * @returns {Promise<void>}
+ */
 async function mostrarProductosCarrito() {
   try {
     const db = await DatabaseCarrito.openDatabase();
@@ -54,11 +50,9 @@ async function mostrarProductosCarrito() {
     const tabla = document.getElementById('tablaCarrito');
     const tbody = tabla.querySelector('tbody');
     
-    // Limpiamos la tabla antes de mostrar los productos
     tbody.innerHTML = '';
     
     if (productosBD.length === 0) {
-      // Si no hay productos, mostramos un mensaje amigable
       tbody.innerHTML = `
         <tr>
           <td colspan="4" class="text-center py-5">
@@ -72,7 +66,6 @@ async function mostrarProductosCarrito() {
         </tr>
       `;
       
-      // Deshabilitar botón de pagar
       const btnPagar = document.getElementById('pagar');
       if (btnPagar) {
         btnPagar.disabled = true;
@@ -81,19 +74,17 @@ async function mostrarProductosCarrito() {
       return;
     }
     
-    // Habilitar botón de pagar si hay productos
     const btnPagar = document.getElementById('pagar');
     if (btnPagar) {
       btnPagar.disabled = false;
     }
     
-    // Añadimos cada producto como una fila en la tabla
     productosBD.forEach(productoBD => {
       const trProducto = Producto.getTrFromProductoBD(productoBD);
       tbody.appendChild(trProducto);
     });
     
-    // Calculamos y mostramos el precio total
+    // calcular total
     const total = await Carrito.calculatePrecioFinal();
     const totalElement = document.getElementById('total');
     const subtotalElement = document.getElementById('subtotal');
@@ -111,7 +102,10 @@ async function mostrarProductosCarrito() {
   }
 }
 
-// Procesa la compra final y vacía el carrito
+/**
+ * Finaliza la compra, limpia el carrito y redirige al inicio
+ * @returns {Promise<void>}
+ */
 async function finalizarCompra() {
   if (!confirm('¿Estás seguro de que quieres finalizar el pedido?')) {
     return;
@@ -120,6 +114,7 @@ async function finalizarCompra() {
   try {
     await DatabaseCarrito.deleteDatabase();
     await Carrito.actualizacabeceraCarrito();
+    alert('Compra finalizada!');
     setTimeout(() => {
       window.location.href = 'index.html';
     }, 100);
@@ -129,6 +124,10 @@ async function finalizarCompra() {
   }
 }
 
+/**
+ * Muestra un mensaje de error en la tabla del carrito
+ * @param {string} mensaje - Mensaje de error a mostrar
+ */
 function mostrarError(mensaje) {
   const tbody = document.querySelector('#tablaCarrito tbody');
   if (tbody) {
