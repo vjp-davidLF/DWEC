@@ -5,32 +5,67 @@
       "titulo": "Energy Sistem Frame Speaker Altavoz Bluetooth East Beach 50W",
       "descripcion": "Potente altavoz tras un lienzo exclusivo con marco de madera, la combinación entre arte y música para integrarse con el resto de la decoración de tu casa. Sorprendete con sus 50 W de potencia, tecnología Bluetooth 5.0, TWS y reproductor MP3 USB y microSD.",
       "precio": "133",
-      "foto": "https://thumb.pccomponentes.com/w-530-530/articles/21/218983/a2.jpg"
+      "foto": "images/Electronica/elec1.png"
     },
     {
       "id": 2,
       "titulo": "Samsung UE85RLK0055 65 LED UltraHD 4K",
-      "descripcion": "Televisor Samsung 65 pulgadas LED UltraHD 4K con HDR.",
+      "descripcion": "Televisor Samsung 65 pulgadas con resolución UltraHD 4K, Smart TV, HDR y sistema de sonido Dolby Digital Plus.",
       "precio": "660.50",
-      "foto": "https://thumb.pccomponentes.com/w-530-530/articles/15/150000/150000.jpg"
+      "foto": "images/Electronica/elec2.png"
+    },
+    {
+      "id": 3,
+      "titulo": "Apple iPhone 13 128GB",
+      "descripcion": "iPhone 13 con pantalla Super Retina XDR de 6.1 pulgadas, chip A15 Bionic, sistema de cámara dual y resistencia al agua IP68.",
+      "precio": "899",
+      "foto": "images/Electronica/elec3.png"
     }
   ],
   "muebles": [
     {
-      "id": 3,
-      "titulo": "Silla de Oficina Ergonómica",
-      "descripcion": "Silla ergonómica con soporte lumbar y reposabrazos ajustables.",
-      "precio": "89.99",
-      "foto": "https://thumb.pccomponentes.com/w-530-530/articles/25/250000/250000.jpg"
+      "id": 4,
+      "titulo": "Sofá Chesterfield de Cuero",
+      "descripcion": "Sofá elegante de cuero genuino con diseño Chesterfield, perfecto para salones modernos y clásicos.",
+      "precio": "1299",
+      "foto": "images/Muebles/mueble1.png"
+    },
+    {
+      "id": 5,
+      "titulo": "Mesa de Centro Moderna",
+      "descripcion": "Mesa de centro con diseño moderno, fabricada en madera de roble y cristal templado.",
+      "precio": "299",
+      "foto": "images/Muebles/mueble2.png"
+    },
+    {
+      "id": 9,
+      "titulo": "Estantería de Madera Natural",
+      "descripcion": "Estantería modular de madera natural con 5 niveles, perfecta para organizar libros y objetos decorativos.",
+      "precio": "179.99",
+      "foto": "images/Muebles/mueble3.png"
     }
   ],
   "decoracion": [
     {
-      "id": 4,
-      "titulo": "Lámpara de Mesa Moderna",
-      "descripcion": "Lámpara de diseño moderno con luz LED regulable.",
+      "id": 6,
+      "titulo": "Lámpara de Pie Moderna",
+      "descripcion": "Lámpara de pie con diseño minimalista, luz regulable y mando a distancia, perfecta para cualquier habitación.",
+      "precio": "89.99",
+      "foto": "images/Decoracion/dec1.png"
+    },
+    {
+      "id": 7,
+      "titulo": "Cuadro Abstracto Moderno",
+      "descripcion": "Cuadro abstracto con colores vivos, marco de madera natural, tamaño 60x80 cm.",
       "precio": "45.50",
-      "foto": "https://thumb.pccomponentes.com/w-530-530/articles/30/300000/300000.jpg"
+      "foto": "images/Decoracion/dec2.png"
+    },
+    {
+      "id": 8,
+      "titulo": "Jarrón Decorativo de Cerámica",
+      "descripcion": "Jarrón decorativo de cerámica artesanal con acabado mate, ideal para flores o como pieza decorativa.",
+      "precio": "35.99",
+      "foto": "images/Decoracion/dec3.png"
     }
   ]
 }

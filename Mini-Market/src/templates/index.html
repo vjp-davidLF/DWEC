@@ -3,13 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini-Market - Inicio</title>
+    <title>Mini-Market - Tienda Online</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
+    <!-- Header -->
     <div id="header"></div>
-    <h1>Inicio</h1>
-    <p>Página de inicio del Mini-Market.</p>
-    <div id="productos"></div>
-    <script src="../js/index.js"></script>
+
+    <!-- Banner principal -->
+    <section class="hero">
+        <h1>Bienvenido a Mini-Market</h1>
+        <p>Descubre los mejores productos para tu hogar</p>
+        <button class="btn-primary">Explorar catálogo</button>
+    </section>
+
+    <!-- Categorias destacadas -->
+    <section class="categorias">
+        <h2>Nuestras Categorías</h2>
+        <div class="categorias-grid">
+            <div class="categoria-card" onclick="window.location.href='electronica.html'">
+                <p>Electrónica</p>
+            </div>
+            <div class="categoria-card" onclick="window.location.href='muebles.html'">
+                <p>Muebles</p>
+            </div>
+            <div class="categoria-card" onclick="window.location.href='decoracion.html'">
+                <p>Decoración</p>
+            </div>
+            <div class="categoria-card">
+                <p>Destacados</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos -->
+    <section class="productos">
+        <div class="productos-header">
+            <h2>Productos</h2>
+            <div class="filtros">
+                <button>Filtros</button>
+                <button>≡</button>
+            </div>
+        </div>
+        <div class="productos-grid" id="productos-container">
+            <!-- Producto 1 -->
+            <div class="producto-card">
+                <div class="producto-imagen">Producto 1</div>
+                <p class="producto-desc">artículos deportivos</p>
+                <div class="producto-rating">
+                    <span class="rating-label">Reloj 1 SGD</span>
+                    <span class="stars">★★★★★</span>
+                </div>
+                <div class="producto-precio">19.99€</div>
+                <button class="btn-carrito">Ver más detalles</button>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="producto-card">
+                <div class="producto-imagen">Producto 2</div>
+                <p class="producto-desc">artículos deportivos</p>
+                <div class="producto-rating">
+                    <span class="rating-label">Reloj 2 SGD</span>
+                    <span class="stars">★★★★★</span>
+                </div>
+                <div class="producto-precio">39.99€</div>
+                <button class="btn-carrito">Ver más detalles</button>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="producto-card">
+                <div class="producto-imagen">Producto 3</div>
+                <p class="producto-desc">artículos deportivos</p>
+                <div class="producto-rating">
+                    <span class="rating-label">Reloj 3 SGD</span>
+                    <span class="stars">★★★★★</span>
+                </div>
+                <div class="producto-precio">69.99€</div>
+                <button class="btn-carrito">Ver más detalles</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <span class="logo-box">MM</span>
+                    <span class="logo-text">MINI-MARKET</span>
+                </div>
+                <p class="footer-description">Tu tienda online de confianza más avanzada de la industria</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Productos</h3>
+                <ul>
+                    <li><a href="electronica.html">Electrónica</a></li>
+                    <li><a href="muebles.html">Muebles</a></li>
+                    <li><a href="decoracion.html">Decoración</a></li>
+                    <li><a href="cesta.html">Carrito</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>Email: minimarket@gmail.com</li>
+                    <li>Tel: +34 123456678</li>
+                    <li>Instagram: minimarket_oficial</li>
+                    <li>Twitter: minimarket_oficial</li>
+                </ul>
+            </div>
+            
+            <div class="footer-section footer-social">
+                <a href="#" class="social-icon">🐦</a>
+                <a href="#" class="social-icon">📷</a>
+                <a href="#" class="social-icon">📘</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>@minimarket_oficial todos los derechos reservados.</p>
+        </div>
+    </footer>
 </body>
 </html>
